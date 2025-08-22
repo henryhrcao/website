@@ -39,6 +39,8 @@ def generate_page(from_path, template_path, dest_path, base):
         elif formatted.startswith("<article>"):
             destFile.write(f"<article>{html}</article>")
         else:
+            line = line.replace('href="/', f'href="{base}')
+            line = line.replace('src="/', f'src="{base}')
             destFile.write(line)
     templateFile.close()
     destFile.close()
